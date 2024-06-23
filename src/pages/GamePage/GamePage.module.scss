@@ -1,0 +1,13 @@
+.container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100vw;
+	min-height: 100svh;
+	max-height: 100vh;
+
+	padding: 0 12px;
+	padding-top: 21px;
+	overflow: hidden;
+}
