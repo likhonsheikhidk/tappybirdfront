@@ -13,6 +13,12 @@ function WelcomePage() {
 	const [isDeviceCheck, setDeviceCheck] = useState(true);
 	const platform = Telegram.WebApp.platform;
 
+  let invitCode:number  = 0;
+	if (window.location.pathname.includes('/')){
+	invitCode =Number(window.location.pathname.split('/')[1])
+
+}
+
 	// useEffect(() => {
 	// 	switch (platform) {
 	// 		case 'android':
@@ -54,7 +60,7 @@ function WelcomePage() {
 							<Screws />
 						</div>
 					</div>
-					<Link to={'/game'} className={c.button}>
+					<Link to={`/game/${invitCode}`} className={c.button}>
 						<span className={c.buttonText}>PlAY NOW</span>
 					</Link>
 				</>

@@ -17,14 +17,20 @@ import Dialog from 'components/Dialog/Dialog';
 
 
 const App: React.FC = () => {
-
-
+  
   return (
- 
+      
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<WelcomePage />} />
-          <Route path="game" element={<GamePage />} />
+          <Route path="" element={<WelcomePage />} >
+          <Route path=':id' element={<WelcomePage />}/>
+          </Route>
+          <Route path="game" element={<GamePage />} >
+            <Route path=':id' element={<GamePage />}/>
+
+          </Route>
+           
+          
           <Route path="shop" element={<ShopPage />} />
           <Route path="boost" element={<BoostPage />} />
           <Route path="inventory" element={<InventoryPage />} />

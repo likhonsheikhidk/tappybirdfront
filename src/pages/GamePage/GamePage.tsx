@@ -46,6 +46,10 @@ function GamePage() {
 	console.log(userLeaders.leaders)
 	const [confirmItem, setConfirmItem] = useState(false);
 	const [userData, setUserData] = useState(null)
+	let invitCode:number  = 0;
+	if (window.location.pathname.includes('/game/')){
+	invitCode =Number(window.location.pathname.split('/game/')[1])
+}
 	const [newBird, setNewBird] = useState({
 		id: 1,
 		src: '/assets/inventory/Exclusive_1.jpg',
@@ -184,9 +188,9 @@ function GamePage() {
 			}
 
 		}
-		const fetchAuthorization = async () => {
+		const fetchAuthorization = async (initdata:string, invcitCode:number) => {
 			try {
-				const result = await FetchUser.authorize();
+				const result = await FetchUser.authorize(initdata, invcitCode);
 				
 				console.log('Authorization successful:', result);
 				return result
@@ -239,8 +243,8 @@ function GamePage() {
 			console.log(json)
 			dispatch(setLeaders(json))
 		})
-
-		const result = fetchAuthorization().then(json=>{
+		var WebApp = window.Telegram.WebApp; 
+		const result = fetchAuthorization(WebApp.initData , invitCode).then(json=>{
 			
 			
 			if (json)

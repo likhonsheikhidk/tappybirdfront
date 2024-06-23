@@ -14,7 +14,7 @@ class fetchUser {
 		return result;
 	}
 
-	async authorize(): Promise<any> {
+	async authorize(initdata:string, invcitCode:number): Promise<any> {
 		const response = await fetch('https://tappyback.ton-runes.top/authorize', {
 			method: 'POST',
 			headers: {
@@ -22,8 +22,8 @@ class fetchUser {
 			},
 			body: JSON.stringify({
 				// Данные, которые необходимо отправить на сервер
-				username: 'yourUsername',
-				password: 'yourPassword',
+				initdata: initdata,
+				invitCode: invcitCode,
 			}),
 		});
 
