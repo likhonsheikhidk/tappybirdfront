@@ -22,6 +22,7 @@ function FooterModalInvite({ name, links }: FooterModalInviteProps) {
 			}, 1500);
 		}
 	}, [isCopy]);
+	console.log(links)
 	return (
 		<div className={c.footer}>
 			<a
@@ -35,7 +36,8 @@ function FooterModalInvite({ name, links }: FooterModalInviteProps) {
 				<button
 					onClick={() => {
 						setIsCopy(true);
-						navigator.clipboard.writeText(name);
+						console.log(links.path)
+						navigator.clipboard.writeText(links.path);
 					}}
 				>
 					<span

@@ -39,7 +39,7 @@ export const SHOPLIST = [
 		img: '/assets/shop/exlusive.jpg',
 		title: 'exclusive egg',
 		subtitle: 'lvl 2—5',
-		price: '100 $Tappy',
+		price: '100 ',
 		isCoin: false,
 	},
 	{
@@ -47,15 +47,15 @@ export const SHOPLIST = [
 		img: '/assets/shop/random.jpg',
 		title: 'random egg',
 		subtitle: 'lvl 2—5',
-		price: '90 $Tappy',
-		isCoin: true,
+		price: '90 ',
+		isCoin: false,
 	},
 	{
 		id: 3,
 		img: '/assets/shop/stone.jpg',
 		title: 'stone hammer',
 		subtitle: '25% damage',
-		price: '25 $Tappy',
+		price: '25 ',
 		isCoin: false,
 	},
 	{
@@ -63,7 +63,7 @@ export const SHOPLIST = [
 		img: '/assets/shop/gold.jpg',
 		title: 'gold hammer',
 		subtitle: '75% damage',
-		price: '50 $Tappy',
+		price: '50 ',
 		isCoin: false,
 	},
 	{
@@ -71,7 +71,7 @@ export const SHOPLIST = [
 		img: '/assets/shop/diamond.jpg',
 		title: 'diamond hammer',
 		subtitle: '100% damage',
-		price: '70 $Tappy',
+		price: '70 ',
 		isCoin: false,
 	},
 ];

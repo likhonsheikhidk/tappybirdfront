@@ -5,7 +5,7 @@ import { FetchUser } from 'api/user';
 import c from './BoostBody.module.scss';
 import { useAppSelector } from 'store';
 import { json } from 'stream/consumers';
-import { changeCoin, setLimitenergy } from 'store/reducers/userReducer';
+import { changeCoin, setBoosters, setLimitenergy } from 'store/reducers/userReducer';
 import { useAppDispatch } from 'store';
 import { changeIsModalInsufficientFunds } from 'store/reducers/modalsReducer';
 interface BoostBodyProps {
@@ -14,6 +14,7 @@ interface BoostBodyProps {
 
 function BoostBody({ openModal }: BoostBodyProps) {
 	const { user } = useAppSelector((state) => state.user);
+	console.log(user)
 	const dispatch = useAppDispatch();
 	const buyBooster = async (booster_name:string) => {
 		try {
@@ -37,7 +38,7 @@ function BoostBody({ openModal }: BoostBodyProps) {
 			const result = await buyBooster(booster_name).then(json=>{
 			 dispatch(setLimitenergy(json.max_energy))
 				dispatch(changeCoin(json.coins))
-
+				dispatch(setBoosters(json.boosters))
 				console.log(json)
 			});
 			// Можно что-то сделать с результатом, если нужно
@@ -62,7 +63,7 @@ function BoostBody({ openModal }: BoostBodyProps) {
 					<div className={c.wrapperCardActions}>
 					<QuestionButton onClick={openModal} />
 						<button className={c.wrapperCardActionsBtn} onClick={buyHandler(elem.title, elem.price)}>
-							<span> BUY | {formatCoin(elem.price*(user.boosters[elem.title]['buff_level']+1))}</span>
+							<span> BUY | {elem.title == 'tap bot' ?  elem.price  :     Object.keys(user.boosters[elem.title]).length>0 ?     formatCoin(elem.price* Math.pow(2, (user.boosters[elem.title]['buff_level']))) : elem.price }</span>
 							<img src="/assets/coin.png" alt="coin" />
 						</button>
 					</div>

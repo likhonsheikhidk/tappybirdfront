@@ -14,10 +14,12 @@ interface InviteFriendsModalProps {
 function InviteFriendsModal({ isOpen, closeModal }: InviteFriendsModalProps) {
 	const [active, setActive] = useState<'default' | 'show' | 'close'>('default');
 	const {user} = useAppSelector(state=>state.user)
+	console.log(user)
 	const links = {
 		path: user.inviteLink,
 		text: 'Hello world!',
 	};
+	console.log(links)
 	useEffect(() => {
 		if (isOpen) {
 			setActive('show');

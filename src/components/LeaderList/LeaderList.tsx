@@ -40,8 +40,8 @@ function LeaderList({ elem, index, isJoin }: LeaderListProps) {
 
 
   const handleJoin = () => {
-	if (squadId){
-	joinSquad(squadId).then(json=>{
+	
+	joinSquad(elem.id).then(json=>{
 		if (json.detail){
 			return			
 		}
@@ -58,7 +58,7 @@ function LeaderList({ elem, index, isJoin }: LeaderListProps) {
 
 
 	})
-		}
+		
 	};
   return (
     <div className={c.wrapper}>

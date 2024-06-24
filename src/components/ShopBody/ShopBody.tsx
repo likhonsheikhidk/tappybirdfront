@@ -1,9 +1,9 @@
 import { SHOPLIST } from 'constants/cardsList';
-
+import { EGGS_LIMITS } from 'constants/eggsSource';
 import c from './ShopBody.module.scss';
 import { FetchUser } from 'api/user';
 import { useAppSelector } from 'store';
-import { setTappyCoin } from 'store/reducers/userReducer';
+import { setLimitExp, setTappyCoin } from 'store/reducers/userReducer';
 import { useAppDispatch } from 'store';
 import { setLevel, changeExp, changeCoin } from 'store/reducers/userReducer';
 import { changeIsModalInsufficientFunds } from 'store/reducers/modalsReducer';
@@ -35,6 +35,7 @@ function ShopBody() {
 				console.log(json)
 				if (json){
 					dispatch(setTappyCoin(json.balance_in_tappycoin))
+					dispatch(setLimitExp( EGGS_LIMITS[json.current_level_of_egg-1].hp))
 					dispatch(changeExp(json.exp))
 					dispatch(setLevel(json.current_level_of_egg))
 					dispatch(changeCoin(json.coins))

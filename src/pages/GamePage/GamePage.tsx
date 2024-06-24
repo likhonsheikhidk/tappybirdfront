@@ -106,19 +106,21 @@ function GamePage() {
 			const result = fetchMinecoin(user.id).then(json=>{
 				console.log(json)
 				if (json == 'buy egg'){
-					
+					setIsEggsEmptyModal(true);
+					return
 				}
 				showDamage(coords, json.brds_for_tap);
 				dispatch(changeEnergy(json.energy))
-			if (json.current_level_of_egg > user.level){
+			if (json.current_level_of_egg > user.level || json.current_level_of_egg == 6 ){
 				if (json.new_bird){
 					setNewBird(json.new_bird)
 					dispatch(setUsersBirds([...user.birds, json.new_bird]))
+					setConfirmItem(true);
+					dispatch(setLimitExp(EGGS_LIMITS[json.current_level_of_egg-1]['hp']))
+					dispatch(setLevel(json.current_level_of_egg))
+					
 				}
 
-				setConfirmItem(true);
-				dispatch(setLimitExp(EGGS_LIMITS[json.current_level_of_egg-1]['hp']))
-				dispatch(setLevel(json.current_level_of_egg))
 				dispatch(changeExp(json.exp))
 				dispatch(changeCoin(json.coins));
 				return
@@ -244,7 +246,7 @@ function GamePage() {
 			dispatch(setLeaders(json))
 		})
 		var WebApp = window.Telegram.WebApp; 
-		const result = fetchAuthorization(WebApp.initData , invitCode).then(json=>{
+		const result = fetchAuthorization('WebApp.initData' , invitCode).then(json=>{
 			
 			
 			if (json)

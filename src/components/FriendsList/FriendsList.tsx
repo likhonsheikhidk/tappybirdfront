@@ -9,7 +9,7 @@ function FriendsList() {
 		<div className={c.friendsWrapper}>
 			<div className={c.header}>
 				<h3 className={c.title}>my friends</h3>
-				<span>10</span>
+				<span>{friends.length}</span>
 			</div>
 			<div className={c.friends}>
 				{friends.map((friend) => (
