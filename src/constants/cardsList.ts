@@ -3,7 +3,7 @@ import { TypeChecking } from 'types/Task.types';
 export const BOOSTLIST = [
 	{
 		id: 1,
-		icon: '/assets/boost/multitap.jpg',
+		icon: '/assets/boost/multitap.png',
 		title: 'multitap',
 		subtitle: 'Get +1 coin per tap',
 		price: 5000,
@@ -13,7 +13,7 @@ export const BOOSTLIST = [
 	},
 	{
 		id: 2,
-		icon: '/assets/boost/max-energy.jpg',
+		icon: '/assets/boost/max-energy.png',
 		title: 'max energy',
 		subtitle: 'Get +500 max energy',
 		price: 5000,
@@ -23,7 +23,7 @@ export const BOOSTLIST = [
 	},
 	{
 		id: 3,
-		icon: '/assets/boost/tapbot.jpg',
+		icon: '/assets/boost/tapbot.png',
 		title: 'tap bot',
 		subtitle: 'Get autoclicker for 12 hr',
 		price: 100000,
@@ -36,7 +36,7 @@ export const BOOSTLIST = [
 export const SHOPLIST = [
 	{
 		id: 1,
-		img: '/assets/shop/exlusive.jpg',
+		img: '/assets/shop/exlusive.png',
 		title: 'exclusive egg',
 		subtitle: 'lvl 2—5',
 		price: '100 ',
@@ -44,7 +44,7 @@ export const SHOPLIST = [
 	},
 	{
 		id: 2,
-		img: '/assets/shop/random.jpg',
+		img: '/assets/shop/random.png',
 		title: 'random egg',
 		subtitle: 'lvl 2—5',
 		price: '90 ',
@@ -52,7 +52,7 @@ export const SHOPLIST = [
 	},
 	{
 		id: 3,
-		img: '/assets/shop/stone.jpg',
+		img: '/assets/shop/stone.png',
 		title: 'stone hammer',
 		subtitle: '25% damage',
 		price: '25 ',
@@ -60,7 +60,7 @@ export const SHOPLIST = [
 	},
 	{
 		id: 4,
-		img: '/assets/shop/gold.jpg',
+		img: '/assets/shop/gold.png',
 		title: 'gold hammer',
 		subtitle: '75% damage',
 		price: '50 ',
@@ -68,7 +68,7 @@ export const SHOPLIST = [
 	},
 	{
 		id: 5,
-		img: '/assets/shop/diamond.jpg',
+		img: '/assets/shop/diamond.png',
 		title: 'diamond hammer',
 		subtitle: '100% damage',
 		price: '70 ',
