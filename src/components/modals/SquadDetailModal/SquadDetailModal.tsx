@@ -13,13 +13,10 @@ interface SquadDetailModalProps {
 	isOpen: boolean;
 }
 
-const links = {
-	path: 'https://t.me/testtappybird_bot',
-	text: 'Hello world!',
-};
 
 function SquadDetailModal({ closeModal, isOpen }: SquadDetailModalProps) {
 	const [active, setActive] = useState<'default' | 'show' | 'close'>('default');
+	
 
 	const squadId = useAppSelector((state) => state.user.user.squad);
 	const { squads } = useAppSelector((state) => state.squads);
@@ -44,9 +41,13 @@ function SquadDetailModal({ closeModal, isOpen }: SquadDetailModalProps) {
 		}
 		return null;
 	}, [squadId]);
-
+	
 	if (!squad) return null;
-
+	const links = {
+		path: squad.telegram_link ? squad.telegram_link : '',
+		text: 'Hello world!',
+	};
+	console.log(links)
 	return (
 		<div
 			className={classNames({
@@ -69,7 +70,7 @@ function SquadDetailModal({ closeModal, isOpen }: SquadDetailModalProps) {
 						</div>
 						<div className={c.bodyColumn}>
 							<span>Coins</span>
-							<h4>100К</h4>
+							<h4>{squad.coins}</h4>
 						</div>
 					</div>
 					<FooterModalInvite name={squad.nickname} links={links} />
