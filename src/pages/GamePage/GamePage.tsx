@@ -39,6 +39,7 @@ import { useNavigate } from 'react-router-dom';
 function GamePage() {
 	const dispatch = useAppDispatch();
 	const { user } = useAppSelector((state) => state.user);
+	const[ isGotref, setIsGotRef] = useState(false);
 	const { tasks } = useAppSelector((state) => state.tasks);
 	const [isEggsEmptyModal, setIsEggsEmptyModal] = useState(false);
 	const navigate = useNavigate();
@@ -287,9 +288,10 @@ function GamePage() {
 		
 	}
 	else{
-		if (friends.length == 0){
+		if (friends.length == 0 && !isGotref){
 	
 		getRefs(user.id).then(json=>{
+			setIsGotRef(true)
 			if (json){
 			dispatch(setFriends(json))
 			setIsConnected(true)
