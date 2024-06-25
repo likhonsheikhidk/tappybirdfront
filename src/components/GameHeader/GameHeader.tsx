@@ -10,11 +10,11 @@ function GameHeader() {
 	const dispatch = useAppDispatch();
 	const coin = useAppSelector((state) => state.user.user.coin);
 	const { user } = useAppSelector((state) => state.user);
-	console.log(user)
+	console.log(user);
 	const navigate = useNavigate();
 	const handleNavigation = () => {
 		navigate('/ch');
-	  };
+	};
 	return (
 		<div className={c.header}>
 			<div className={c.headerBalance}>
@@ -29,8 +29,7 @@ function GameHeader() {
 					<span className={c.headerBalanceCoinText}>{formatCoin(coin)}</span>
 				</div>
 				<div className={c.headerBalanceTappy}>
-					$TAPPY
-					{user.balance_in_tappycoin}{' '}
+					{user.balance_in_tappycoin} $TAPPY
 					<button
 						className={c.headerBalanceButton}
 						onTouchEnd={(event) => event.stopPropagation()}

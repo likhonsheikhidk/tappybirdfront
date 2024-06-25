@@ -66,10 +66,6 @@ function PaymentModal({ isOpen, closeModal }: PaymentModalProps) {
 					</div>
 					<div className={c.modalContentBody}>
 						<h2 className={c.modalContentTitle}>top up a $tappy</h2>
-						<p className={c.modalContentDesc}>
-							Добавьте кошелек для пополнения. <br /> Вы сможете изменить его
-							позже.
-						</p>
 					</div>
 					<div className={c.modalContentActions}>
 						<button
