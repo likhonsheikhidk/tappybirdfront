@@ -43,6 +43,7 @@ function GamePage() {
 	const [isEggsEmptyModal, setIsEggsEmptyModal] = useState(false);
 	const navigate = useNavigate();
 	const userLeaders = useAppSelector(state=>state.userLeaders)
+	const {friends} = useAppSelector(state=>state.friends)
 	console.log(userLeaders.leaders)
 	const [confirmItem, setConfirmItem] = useState(false);
 	const [userData, setUserData] = useState(null)
@@ -286,6 +287,7 @@ function GamePage() {
 		
 	}
 	else{
+		if (friends)
 		getRefs(user.id).then(json=>{
 			if (json){
 			dispatch(setFriends(json))
