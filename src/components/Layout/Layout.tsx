@@ -7,14 +7,19 @@ import {
 	changeIsModalInsufficientFunds,
 	changeIsModalPayment,
 	changeIsModalPaymentSuccess,
+	changeIsModalPurchase,
 } from 'store/reducers/modalsReducer';
 import SuccessIcon from 'assets/icons/SuccessIcon';
 import CustomModal from 'components/modals/CustomModal';
 
 function Layout() {
 	const dispatch = useAppDispatch();
-	const { isModalPayment, isModalPaymentSuccess, isModalInsufficientFunds } =
-		useAppSelector((state) => state.modals);
+	const {
+		isModalPayment,
+		isModalPaymentSuccess,
+		isModalInsufficientFunds,
+		isModalPurchase,
+	} = useAppSelector((state) => state.modals);
 
 	return (
 		<div className={c.container}>
@@ -45,6 +50,14 @@ function Layout() {
 					children={
 						<p className={c.successText}>You don't have enough coins to buy</p>
 					}
+				/>
+			)}
+			{isModalPurchase && (
+				<CustomModal
+					isOpen={isModalPurchase}
+					closeModal={() => dispatch(changeIsModalPurchase(false))}
+					title="✅"
+					children={<p className={c.successText}>Successful purchase</p>}
 				/>
 			)}
 		</div>

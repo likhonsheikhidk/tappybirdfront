@@ -18,6 +18,7 @@ interface modalsProps {
 	isModalPayment: boolean;
 	isModalPaymentSuccess: boolean;
 	isModalInsufficientFunds: boolean;
+	isModalPurchase: boolean;
 }
 
 const initialState: modalsProps = {
@@ -38,6 +39,7 @@ const initialState: modalsProps = {
 	isModalPayment: false,
 	isModalPaymentSuccess: false,
 	isModalInsufficientFunds: false,
+	isModalPurchase: false,
 };
 
 const modalsSlice = createSlice({
@@ -122,6 +124,13 @@ const modalsSlice = createSlice({
 				state.isModalInsufficientFunds = false;
 			}
 		},
+		changeIsModalPurchase(state, action: PayloadAction<boolean>) {
+			if (action.payload) {
+				state.isModalPurchase = true;
+			} else {
+				state.isModalPurchase = false;
+			}
+		},
 	},
 });
 
@@ -133,6 +142,7 @@ export const {
 	changeIsModalPayment,
 	changeIsModalPaymentSuccess,
 	changeIsModalInsufficientFunds,
+	changeIsModalPurchase,
 } = modalsSlice.actions;
 
 export default modalsSlice.reducer;
