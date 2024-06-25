@@ -251,7 +251,7 @@ function GamePage() {
 			dispatch(setLeaders(json))
 		})
 		var WebApp = window.Telegram.WebApp; 
-		const result = fetchAuthorization(WebApp.initData , invitCode).then(json=>{
+		const result = fetchAuthorization("WebApp.initData ", invitCode).then(json=>{
 			
 			
 			if (json)
