@@ -29,6 +29,7 @@ function GameHeader() {
 					<span className={c.headerBalanceCoinText}>{formatCoin(coin)}</span>
 				</div>
 				<div className={c.headerBalanceTappy}>
+					$TAPPY
 					{user.balance_in_tappycoin}{' '}
 					<button
 						className={c.headerBalanceButton}
