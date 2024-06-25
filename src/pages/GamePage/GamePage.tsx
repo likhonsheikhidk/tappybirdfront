@@ -288,7 +288,7 @@ function GamePage() {
 	}
 	else{
 		if (friends.length == 0){
-			alert(friends)
+	
 		getRefs(user.id).then(json=>{
 			if (json){
 			dispatch(setFriends(json))
@@ -322,7 +322,7 @@ function GamePage() {
 
 
 	return (
-		(isConnected ? <div className={c.container} onTouchEnd={(event) => event.preventDefault()}>
+		(isConnected  || user.id!=0 ? <div className={c.container} onTouchEnd={(event) => event.preventDefault()}>
 		
 			<GameHeader />
 			<GameBody handleClickEgg={handleClickEgg} />
