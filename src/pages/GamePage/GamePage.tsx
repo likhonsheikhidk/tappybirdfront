@@ -287,14 +287,14 @@ function GamePage() {
 		
 	}
 	else{
-		if (friends)
+		if (friends.length == 0){
 		getRefs(user.id).then(json=>{
 			if (json){
 			dispatch(setFriends(json))
 			setIsConnected(true)
 		}
 			
-		})
+		})}
 	
 	}
 		const interval = setInterval(() => {
