@@ -47,7 +47,10 @@ function SquadDetailModal({ closeModal, isOpen }: SquadDetailModalProps) {
 		path: squad.telegram_link ? squad.telegram_link : '',
 		text: 'Hello world!',
 	};
-	console.log(links)
+	let index = squads.findIndex(item => item.id === squad.id && 
+		item.nickname === squad.nickname &&
+		item.coins === squad.coins &&
+		item.telegram_link === squad.telegram_link);
 	return (
 		<div
 			className={classNames({
@@ -66,7 +69,7 @@ function SquadDetailModal({ closeModal, isOpen }: SquadDetailModalProps) {
 					<div className={c.body}>
 						<div className={c.bodyColumn}>
 							<span>Place</span>
-							<h4>162</h4>
+							<h4>{index+1}</h4>
 						</div>
 						<div className={c.bodyColumn}>
 							<span>Coins</span>

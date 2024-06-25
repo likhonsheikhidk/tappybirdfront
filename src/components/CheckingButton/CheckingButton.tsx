@@ -115,6 +115,12 @@ function CheckingButton({
 		
 
 			if (!(user.completed_tasks.includes(task.id))) {
+				const anchor = document.createElement('a');
+				anchor.href = href;
+				
+				anchor.target = '_blank';
+				anchor.click();
+				
 				checkIsTaskCompleted().then(json=>{
 					console.log(json)
 					if (!(json)){

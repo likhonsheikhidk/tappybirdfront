@@ -72,7 +72,7 @@ function GamePage() {
 		fetchTasksForGeo(user.id, user.sign).then(json=>{
 			console.log(json)
 			dispatch(setTasks(json))
-		})
+		}) 
 	}
 
 	const showDamage = useCallback(
@@ -116,7 +116,11 @@ function GamePage() {
 					setNewBird(json.new_bird)
 					dispatch(setUsersBirds([...user.birds, json.new_bird]))
 					setConfirmItem(true);
-					dispatch(setLimitExp(EGGS_LIMITS[json.current_level_of_egg-1]['hp']))
+					if (json.current_level_of_egg == 0){
+						dispatch(setLimitExp(EGGS_LIMITS.slice(-1)[0]['hp']))
+					}
+					else{
+					dispatch(setLimitExp(EGGS_LIMITS[json.current_level_of_egg-1]['hp']))}
 					dispatch(setLevel(json.current_level_of_egg))
 					
 				}
@@ -259,7 +263,11 @@ function GamePage() {
 			dispatch(changeCoin(json.coins))
 			dispatch(setBoosters(json.boosters))
 			dispatch(setHammers(json.hammers))
-			dispatch(setLimitExp(EGGS_LIMITS[json.current_level_of_egg-1]['hp']))
+			if (json.current_level_of_egg == 0){
+				dispatch(setLimitExp(EGGS_LIMITS.slice(-1)[0]['hp']))
+			}
+			else{
+			dispatch(setLimitExp(EGGS_LIMITS[json.current_level_of_egg-1]['hp']))}
 			dispatch(setLevel(json.current_level_of_egg))
 			dispatch(changeSquad(json.in_squad))
 			dispatch(setCompletedtasks(json.completed_tasks))

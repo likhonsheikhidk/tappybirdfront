@@ -89,7 +89,12 @@ function GameBody({ handleClickEgg }: GameBodyProps) {
 	}, [exp]);
 
 	const getImageToShow = useCallback(() => {
-		const eggs = EGGS[level - 1];
+		let eggs;
+		if (level == 0){
+			 eggs = EGGS.slice(-1)[0]
+		}
+		else{
+		 eggs = EGGS[level - 1];}
 		const checkDamage = (exp * 100) / limitExp;
 		console.log([level-1, eggs])
 		if (checkDamage === 0) {

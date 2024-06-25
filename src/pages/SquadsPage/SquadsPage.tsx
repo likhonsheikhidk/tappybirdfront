@@ -40,7 +40,7 @@ function SquadsPage() {
 		}
 		return null;
 	}, [user.squad]);
-
+	console.log(squads)
 	
 	return (
 		<div className={c.container}>

@@ -10,11 +10,13 @@ import {
 	changeIsModalInsufficientFunds,
 	changeIsModalPurchase,
 } from 'store/reducers/modalsReducer';
+import { useState } from 'react';
+import EggsEmptyModal from 'components/modals/EggsEmptyModal';
 
 function ShopBody() {
 	const dispatch = useAppDispatch();
 	const { user } = useAppSelector((state) => state.user);
-
+	const [isEggsEmptyModal, setIsEggsEmptyModal] = useState(false);
 	const buyShopItem = async (item_name: string) => {
 		try {
 			const result = await FetchUser.buyShopItem(user.id, user.sign, item_name);
@@ -35,8 +37,22 @@ function ShopBody() {
 			const result = await buyShopItem(item_name).then((json) => {
 				console.log(json);
 				if (json) {
+					if (!(typeof json == 'object')){
+						setIsEggsEmptyModal(true)
+							return
+					}
+
+					if (!('coins' in json))
+						{
+							setIsEggsEmptyModal(true)
+							return
+						}
 					dispatch(setTappyCoin(json.balance_in_tappycoin));
-					dispatch(setLimitExp(EGGS_LIMITS[json.current_level_of_egg - 1].hp));
+					if (json.current_level_of_egg == 0){
+						dispatch(setLimitExp(EGGS_LIMITS.slice(-1)[0]['hp']))
+					}
+					else{
+					dispatch(setLimitExp(EGGS_LIMITS[json.current_level_of_egg-1]['hp']))}
 					dispatch(changeExp(json.exp));
 					dispatch(setLevel(json.current_level_of_egg));
 					dispatch(changeCoin(json.coins));
@@ -49,6 +65,12 @@ function ShopBody() {
 	};
 	return (
 		<div className={c.shopBody}>
+				{isEggsEmptyModal && (
+				<EggsEmptyModal
+					isOpen={isEggsEmptyModal}
+					closeModal={() => setIsEggsEmptyModal(false)}
+				/>
+			)}
 			{SHOPLIST.map((elem) => (
 				<div className={c.shopBodyCard} key={elem.id}>
 					<img src={elem.img} alt={elem.title} className={c.shopBodyCardImg} />
