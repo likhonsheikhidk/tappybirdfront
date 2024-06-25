@@ -288,6 +288,7 @@ function GamePage() {
 	}
 	else{
 		if (friends.length == 0){
+			alert(friends)
 		getRefs(user.id).then(json=>{
 			if (json){
 			dispatch(setFriends(json))
